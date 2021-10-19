@@ -69,7 +69,9 @@ namespace MemoryGame
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label37 = new System.Windows.Forms.Label();
+            this.playerScore1 = new System.Windows.Forms.Label();
+            this.player2score = new System.Windows.Forms.Label();
+            this.currentPlayer = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -410,18 +412,31 @@ namespace MemoryGame
             this.timer1.Interval = 750;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label37
+            // playerScore1
             // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
-            this.label37.Click += new System.EventHandler(this.label37_Click);
+            resources.ApplyResources(this.playerScore1, "playerScore1");
+            this.playerScore1.BackColor = System.Drawing.Color.Lime;
+            this.playerScore1.Name = "playerScore1";
+            // 
+            // player2score
+            // 
+            resources.ApplyResources(this.player2score, "player2score");
+            this.player2score.BackColor = System.Drawing.Color.Red;
+            this.player2score.Name = "player2score";
+            // 
+            // currentPlayer
+            // 
+            resources.ApplyResources(this.currentPlayer, "currentPlayer");
+            this.currentPlayer.Name = "currentPlayer";
             // 
             // Memory
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.label37);
+            this.Controls.Add(this.currentPlayer);
+            this.Controls.Add(this.player2score);
+            this.Controls.Add(this.playerScore1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Memory";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -472,7 +487,9 @@ namespace MemoryGame
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label playerScore1;
+        private System.Windows.Forms.Label player2score;
+        private System.Windows.Forms.Label currentPlayer;
     }
 }
 

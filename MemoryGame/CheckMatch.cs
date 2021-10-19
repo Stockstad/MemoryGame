@@ -11,21 +11,22 @@ namespace MemoryGame
 
         private string cardOne;
         private string cardTwo;
-        public bool isMatch;
+        public int player;
+        
       
 
 
-        public CheckMatch(string card1, string card2)
+        public CheckMatch(string cardOne, string cardTwo, int player)
         {
-            cardOne = card1;
-            cardTwo = card2;
-
+            this.cardOne = cardOne;
+            this.cardTwo = cardTwo;
+            this.player = player;
 
         }
 
 
         public string CardOne
-        {
+        {                       
             get { return cardOne; }
             set { cardOne = value; }
 
@@ -42,7 +43,29 @@ namespace MemoryGame
 
         }
 
+        public int Player
+        {
+            get { return player; }
+            set { player = value; }
 
+
+        }
+
+        public bool Matching()
+        {
+            if (cardOne == cardTwo)
+            { return true; }
+
+
+
+            else
+            { return false; }
+            
+
+
+
+
+        }
 
         
         

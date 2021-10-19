@@ -22,12 +22,17 @@ namespace MemoryGame
             "P", "P", "e", "e", "S", "S", "d", "d", "v", "v", "y", "y", "B", "B"
         };
 
-        Label firstCard = null;
-        Label secondCard = null;
-        bool isMatch;
+        Label firstCard;
+        Label secondCard;
+        Label rightCard1;
+        Label rightCard2;
+        int selectedPlayer = 0;
+        bool isMatch = false;
+        int playerSC1 = 0;
+        int playerSC2 = 0;
+     
 
-        int playerScore = 0;
-        
+  
 
 
 
@@ -38,6 +43,7 @@ namespace MemoryGame
         {
             InitializeComponent();
             RandomiseCards();
+
            
         }
 
@@ -67,42 +73,77 @@ namespace MemoryGame
 
             Label clickedCard = sender as Label;
 
-            if (clickedCard != null)
+            if (clickedCard != null && clickedCard.ForeColor != Color.Red)
             {
+                
+                
+                    if (clickedCard.ForeColor == Color.Black)
+                    {
+                        return;
+                    }
 
-                if (clickedCard.ForeColor == Color.Black)
+
+
+
+                    if (firstCard == null)
+                    {
+                        firstCard = clickedCard;
+                        firstCard.ForeColor = Color.Black;
+
+                        return;
+                    }
+
+                    secondCard = clickedCard;
+                    secondCard.ForeColor = Color.Black;
+
+                    timer1.Start();
+
+                    var matchcheck = new CheckMatch(firstCard.Text, secondCard.Text, selectedPlayer);
+
+                    isMatch = matchcheck.Matching();
+
+
+                    if (isMatch == true)
+                    {
+
+                        if (matchcheck.player == 0)
+                        {
+                            
+                            playerSC1++;
+                            playerScore1.Text = Convert.ToString(playerSC1);
+                        }
+                        else if (matchcheck.player == 1)
+                        {
+                            playerSC2++;
+                            player2score.Text = Convert.ToString(playerSC2);
+
+
+                        }
+                    
+
+                        rightCard1 = secondCard;
+                        rightCard2 = firstCard;
+
+                        rightCard1.ForeColor = Color.Red;
+                        rightCard2.ForeColor = Color.Red;
+
+
+
+                    }
+                    else
+                    ContinueTurn();
+
+
+                if (playerSC1 + playerSC2 ==  18)
                 {
-                    return;
+                    if (playerSC1 > playerSC2)
+                        MessageBox.Show("Player 1 is victorious!");
+
+                    if (playerSC2 > playerSC1)
+                        MessageBox.Show("Player 2 is victorious!");
                 }
 
-
-
-
-                if (firstCard == null)
-                {
-                    firstCard = clickedCard;
-                    firstCard.ForeColor = Color.Black;
-
-                    return;
-                }
-
-                secondCard = clickedCard;
-                secondCard.ForeColor = Color.Black;
-
-                timer1.Start();
-
-                isMatch = WhileMatch();
-
-
-                if (isMatch == true)
-                {
-                    playerScore++;
-                    label37.Text = Convert.ToString(playerScore);
-                }
             }
-
-
-           
 
 
            
@@ -131,33 +172,61 @@ namespace MemoryGame
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-        
+
             timer1.Stop();
 
 
-            firstCard.ForeColor = firstCard.BackColor;
-            secondCard.ForeColor = secondCard.BackColor;
+            
 
-         
-            firstCard = null;
-            secondCard = null;
-        }
-
-        public bool WhileMatch()
-        {
-            if (firstCard.Text == secondCard.Text)
+            if (firstCard.ForeColor != Color.Red)
             {
-                return true;
+                firstCard.ForeColor = firstCard.BackColor;
+                secondCard.ForeColor = secondCard.BackColor;
+               
             }
 
+            firstCard = null;
+            secondCard = null;
 
+            isMatch = false;
 
-            return false;
         }
+
+       
 
         private void label37_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        public void ContinueTurn()
+        {
+            if (selectedPlayer == 0)
+            {
+                selectedPlayer++;
+                currentPlayer.Text = "1";
+            }
+            else if (selectedPlayer == 1)
+            {
+                selectedPlayer--;
+                currentPlayer.Text = "0";
+            }
+
+            
+
+        }
+      
+
+
+
+
+
+        
     }
 }
