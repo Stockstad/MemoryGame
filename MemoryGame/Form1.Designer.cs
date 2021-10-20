@@ -417,6 +417,7 @@ namespace MemoryGame
             resources.ApplyResources(this.playerScore1, "playerScore1");
             this.playerScore1.BackColor = System.Drawing.Color.Lime;
             this.playerScore1.Name = "playerScore1";
+            this.playerScore1.Click += new System.EventHandler(this.playerScore1_Click);
             // 
             // player2score
             // 

@@ -30,9 +30,10 @@ namespace MemoryGame
         bool isMatch = false;
         int playerSC1 = 0;
         int playerSC2 = 0;
-     
+        Game[] players = new Game[3]; //Max number of players is 3
 
-  
+
+        int amountOfPlayers = 2; //current number of players
 
 
 
@@ -44,7 +45,17 @@ namespace MemoryGame
             InitializeComponent();
             RandomiseCards();
 
-           
+
+
+
+
+            Game players[0] = new Game(amountOfPlayers);
+
+
+
+
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,37 +79,37 @@ namespace MemoryGame
             {
                 return;
             }
-                
 
+          
 
             Label clickedCard = sender as Label;
 
             if (clickedCard != null && clickedCard.ForeColor != Color.Red)
             {
-                
-                
-                    if (clickedCard.ForeColor == Color.Black)
-                    {
-                        return;
-                    }
+
+
+                if (clickedCard.ForeColor == Color.Black)
+                {
+                    return;
+                }
 
 
 
 
-                    if (firstCard == null)
-                    {
-                        firstCard = clickedCard;
-                        firstCard.ForeColor = Color.Black;
+                if (firstCard == null)
+                {
+                    firstCard = clickedCard;
+                    firstCard.ForeColor = Color.Black;
 
-                        return;
-                    }
+                    return;
+                }
 
-                    secondCard = clickedCard;
-                    secondCard.ForeColor = Color.Black;
+                secondCard = clickedCard;
+                secondCard.ForeColor = Color.Black;
 
-                    timer1.Start();
+                timer1.Start();
 
-                    var matchcheck = new CheckMatch(firstCard.Text, secondCard.Text, selectedPlayer);
+               
 
                     isMatch = matchcheck.Matching();
 
@@ -205,28 +216,10 @@ namespace MemoryGame
         }
 
 
-        public void ContinueTurn()
-        {
-            if (selectedPlayer == 0)
-            {
-                selectedPlayer++;
-                currentPlayer.Text = "1";
-            }
-            else if (selectedPlayer == 1)
-            {
-                selectedPlayer--;
-                currentPlayer.Text = "0";
-            }
 
-            
+        private void playerScore1_Click(object sender, EventArgs e)
+        {
 
         }
-      
-
-
-
-
-
-        
     }
 }
