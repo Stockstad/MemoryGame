@@ -30,7 +30,8 @@ namespace MemoryGame
         bool isMatch = false;
         int playerSC1 = 0;
         int playerSC2 = 0;
-        Game[] players = new Game[3]; //Max number of players is 3
+
+        List<Player> players = new List<Player>();
 
 
         int amountOfPlayers = 2; //current number of players
@@ -49,7 +50,7 @@ namespace MemoryGame
 
 
 
-            Game players[0] = new Game(amountOfPlayers);
+            
 
 
 
@@ -75,6 +76,17 @@ namespace MemoryGame
 
         private void label1_Click(object sender, EventArgs e) //Körs för alla labels i tabellen
         {
+
+            players = new List<Player>();
+            for (int i = 0; i < 4; i++)
+            {
+                players.Add(new Player() {1, 1, });
+
+
+            }
+
+
+
             if (timer1.Enabled == true)
             {
                 return;
