@@ -46,21 +46,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="..\..\..\..\..\Desktop\Form1Backup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="..\..\..\..\..\Desktop\Form1Backup.Designer.cs">
+      <DependentUpon>Form1Backup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="playerControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="playerControl.Designer.cs">
+      <DependentUpon>playerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayingCards.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.en.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Sounds.cs" />
+    <Compile Include="startform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="startform.Designer.cs">
+      <DependentUpon>startform.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="..\..\..\..\..\Desktop\Form1Backup.en.resx">
+      <DependentUpon>Form1Backup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="..\..\..\..\..\Desktop\Form1Backup.resx">
+      <DependentUpon>Form1Backup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="playerControl.resx">
+      <DependentUpon>playerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -71,6 +87,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="startform.resx">
+      <DependentUpon>startform.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
