@@ -4,55 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using System.IO;
 
 namespace MemoryGame
 {
-    class Sounds
+    static class Sounds
     {
-
-       private static SoundPlayer ding = new SoundPlayer(@"C:\Users\johan.torner\source\repos\Stockstad\MemoryGameNew\MemoryGame\bin\Debug\Sound\ding.wav");
-       private static SoundPlayer fanfare = new SoundPlayer(@"C:\Users\johan.torner\source\repos\Stockstad\MemoryGameNew\MemoryGame\bin\Debug\Sound\fanfare.wav");
-       private static SoundPlayer mainMenu = new SoundPlayer(@"C:\Users\johan.torner\source\repos\Stockstad\MemoryGameNew\MemoryGame\bin\Debug\Sound\main_menu.wav");
-       private static SoundPlayer buttonHov = new SoundPlayer(@"C:\Users\johan.torner\source\repos\Stockstad\MemoryGameNew\MemoryGame\bin\Debug\Sound\buttonHover.wav");
-       private static SoundPlayer pipe = new SoundPlayer(@"C:\Users\johan.torner\source\repos\Stockstad\MemoryGameNew\MemoryGame\bin\Debug\Sound\pipe.wav");
-       private static SoundPlayer charSelect = new SoundPlayer(@"C:\Users\johan.torner\source\repos\Stockstad\MemoryGameNew\MemoryGame\bin\Debug\Sound\charSelect.wav");
-
-        public static void playDing()
+        public static string[] soundList = { "main_menu.wav",  "charSelect.wav", "background.wav" };
+        //Potential fix might be coming. However, the priority is low and this works fine. 
+        public static void playSound(int soundToPlay, bool loop)
         {
-            ding.Play();
+            SoundPlayer play = new SoundPlayer(Game.GetSoundsFolder() + soundList[soundToPlay]);
+            if (loop == false)
+            {
+                play.Play();
+            }
+            else
+            {
+                play.PlayLooping();
+            }
         }
-        public static void playFanfare()
+        public static void stopSound(int soundToStop)
         {
-            fanfare.Play();
+            SoundPlayer play = new SoundPlayer(Game.GetSoundsFolder() + soundList[soundToStop]);
+            play.Stop();
         }
-        public static void menuMusic()
-        {
-            mainMenu.Play();
-
-        }
-        public static void menuMusicStop()
-        {
-            mainMenu.Stop();
-        }
-        public static void buttonHover()
-        {
-            buttonHov.Play();
-        }
-        public static void playPipe()
-        {
-            pipe.Play();
-        }
-        public static void charMenu()
-        {
-            charSelect.Play();
-        }
-
-
-
-
-
-
-
-
     }
 }
